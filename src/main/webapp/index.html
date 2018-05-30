@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="cache-control" content="no-cache" />
+		<meta http-equiv="pragma" content="no-cache" />
+		<meta http-equiv="expires" content="-1" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<link href="components/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link href="components/ngProgress/css/ngProgress.css" rel="stylesheet">
+		<link href="components/angular-datatables/css/jquery.dataTables.min.css" rel="stylesheet">
+		<link href="components/angular-datatables/css/angular-datatables.min.css" rel="stylesheet">
+		<link href="components/components-font-awesome/css/font-awesome.min.css" rel="stylesheet">
+		<link href="components/toaster/css/toaster.min.css" rel="stylesheet"/>
+		<link href="assets/css/app.css" rel="stylesheet">
+		<title>Premissas</title>
+	</head>
+	<body ng-controller="MainController as main">
+		<toaster-container toaster-options="{'time-out': 5000, 'close-button':true, 'limit': 10, 'position-class':'toast-top-right'}"></toaster-container>
+		<div class="pre-load" ng-class="{'hide-loader' : main.appLoaded}"></div>
+		<div ng-class="{'app-loaded' : main.appLoaded}" style="display: none" >
+			<nav class="navbar navbar-default" ng-if="auth">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="#">Premissas</a>
+					</div>
+					<div id="navbar" class="navbar-collapse collapse">
+						<ul class="nav navbar-nav">
+							<li ng-click="main.ativo='home'"><a href="#">Home</a></li>
+							<li><a ui-sref="sugestaoProgride">Sugestão Progride</a></li>
+						</ul>
+						<ul class="nav navbar-nav navbar-right">
+							<li>
+								<div class="dadosUsuario">
+									<img alt="{{auth.name}}" title="{{auth.name}}" height="60" ng-src="http://spme.petrobras.com.br/fotos/{{auth.sapId}}.jpg">
+									<div class="nome">
+										Olá, <strong>{{auth.name}}</strong>
+									</div>
+									<div class="sair">
+										<div href="/" ng-click="main.logout()">SAIR</div>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+			<div>
+				<div ui-view class="page-wrapper" autoscroll="true"></div>
+			</div>
+		</div>
+		<script type="text/javascript" src="components/requirejs/require.js" data-main="main.js"></script>
+	</body>
+</html>

@@ -1,0 +1,5 @@
+define(
+		[
+			'app/auth/authService'
+		]
+);

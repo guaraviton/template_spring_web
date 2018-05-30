@@ -1,0 +1,130 @@
+@-webkit-keyframes fadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}  
+@keyframes fadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}
+
+html,
+body {
+  	height: 100%;
+  	margin: 0;
+}
+
+.page-wrapper {
+	padding: 0 15px;
+	background-color: #fff;
+}
+
+@media ( min-width :768px) {
+	.page-wrapper {
+		position: inherit;
+		padding: 0 30px;
+		border-left: 1px solid #e7e7e7;
+	}
+}
+
+[ng\:cloak], [ng-cloak], .ng-cloak {
+    display: none;
+}
+
+.pre-load {
+	background: url('../imgs/spinner.gif') no-repeat center;
+	position: relative;
+	float: left; 
+	background-color: #f8f8f8;
+	opacity: 0.5;
+	min-height: 100%; 
+	min-width: 100%;
+    
+}
+
+.hide-loader {
+	display: none !important;
+}
+
+.app-loaded {
+	display: block !important;
+	-webkit-animation: fadeIn 0.4s;
+    animation: fadeIn 0.4s;
+}
+
+img.spinner{
+   position:absolute;
+   top:50%;
+   left:50%;
+   margin-top:-25px;
+   margin-left:-25px;
+}
+
+.ng-touched.ng-invalid{
+    border-bottom: 1px solid red;
+}
+
+.botoes-group {
+	padding: 7px 0 7px 0;
+}
+
+.link {
+  cursor: pointer;
+}
+
+.drop-box {
+	background: #F8F8F8;
+	border: 2px dashed #DDD;
+}
+
+.container-upload {
+	padding: 10px;
+}
+
+.upload-text {
+	color: #CCC;
+	font-size: 12pt;
+	font-weight: bold;
+	text-align: center;
+}
+
+.upload-item-text {
+	font-size: 10pt;
+}
+
+.navbar .menu{
+	width: 60%;
+	float: left;
+}
+
+.dadosUsuario {
+    color: #256080;
+	padding: 5px 15px;
+	display: flex;
+}
+
+.dadosUsuario img {
+    border: 2px solid #e3e2e2;
+    border-radius: 100%;
+    height: 40px;
+    margin-right: 10px;
+    vertical-align: middle;
+    width: 40px;
+}
+
+.dadosUsuario .nome{
+	margin-top: 8px;
+}
+
+.dadosUsuario div.sair{
+	margin-top: 10px;
+	margin-left: 6px;
+}
+
+.dadosUsuario .sair div{
+    background: none repeat scroll 0 0 #e8e0e0;
+    border-radius: 3px;
+    color: #256080;
+    font-size: 10px;
+    padding: 1px 5px;
+    cursor: pointer;
+}

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	metadata-complete="false">
+
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>br.com.petrobras.ep.premissas.spring.config</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>contextClass</param-name>
+		<param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext
+		</param-value>
+	</context-param>
+
+	<servlet>
+		<servlet-name>springframework</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value></param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>springframework</servlet-name>
+		<url-pattern>/api/*</url-pattern>
+	</servlet-mapping>
+
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<listener>
+		<listener-class>
+			org.springframework.web.context.request.RequestContextListener
+		</listener-class>
+	</listener>
+
+	<session-config>
+		<session-timeout>20</session-timeout>
+	</session-config>
+
+	<error-page>
+		<error-code>404</error-code>
+		<location>/404.jsp</location>
+	</error-page>
+	
+	<listener>
+		<description>Listener de configuração do CA</description>
+		<listener-class>
+			br.com.petrobras.security.extension.web.listener.SecurityConfigListener
+		</listener-class>
+	</listener>
+
+	<context-param>
+		<description>Localização do arquivo de configuração do CA</description>
+		<param-name>securityConfigLocation</param-name>
+		<param-value>configuracao_cav4.properties</param-value>
+	</context-param>
+	
+	<filter>
+		<description>Filtro de autenticação do CA. Necessário para uso de SSO pela aplicação</description>
+		<filter-name>Authentication Verifier</filter-name>
+		<filter-class>
+			br.com.petrobras.security.extension.web.filter.AuthenticationVerifierFilter
+		</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>Authentication Verifier</filter-name>
+		<url-pattern>/api/*</url-pattern>
+	</filter-mapping>
+	
+	<filter-mapping>
+		<filter-name>Authentication Verifier</filter-name>
+		<url-pattern>*.html</url-pattern>
+	</filter-mapping>
+
+</web-app>
